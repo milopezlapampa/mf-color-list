@@ -7,9 +7,12 @@ const deps = require("./package.json").dependencies;
 
 const printCompilationMessage = require('./compilation.config.js');
 
-module.exports = (_, argv) => ({
+module.exports = (_, argv) => {
+  return {
   output: {
-    publicPath: "https://mfcolor-list.netlify.app/",
+    publicPath: argv === "development"
+    ? "http://localhost:3002"
+    : "https://mfcolor-list.netlify.app/",
   },
 
   resolve: {
@@ -85,4 +88,4 @@ module.exports = (_, argv) => ({
     }),
     new Dotenv()
   ],
-});
+}};
