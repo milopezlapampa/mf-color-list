@@ -1,7 +1,7 @@
 import React from 'react'
 import Swal from 'sweetalert2'
 
-const ColorList = ({ colorList = [] }) => {
+const ColorList = ({ colorList = [], handleClickClearColors }) => {
 
   const handleCopyColor = (color) => {
 
@@ -18,7 +18,10 @@ const ColorList = ({ colorList = [] }) => {
   };
 
   return (
-    <div >
+    <>
+    {colorList.length > 0 && ( 
+      <button className="btn btn-danger my-4 w-100" onClick={handleClickClearColors}>Clear List</button>
+    )}
         <div className='list-group text-center'>
           {colorList.length > 0 ? (
             colorList.map((color, index) => (
@@ -38,7 +41,7 @@ const ColorList = ({ colorList = [] }) => {
           </div>
         )}
         </div>
-    </div>
+    </>
   )
 }
 
